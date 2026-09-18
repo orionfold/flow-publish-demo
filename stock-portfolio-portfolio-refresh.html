@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Flow 1.7-dev (1)">
+<title>Portfolio Refresh</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><a class="site-home" href="index.html">Flow Guide Sampler</a><span class="site-separator" aria-hidden="true">›</span><span class="site-section">Stock Portfolio</span></header>
+<article class="document" data-title="Portfolio Refresh">
+<header class="document-header"><h1 class="title">Portfolio Refresh</h1><p class="meta">2026-09-18 · 617 words</p></header>
+<h1 id="how-this-portfolio-refreshes-itself">How this portfolio refreshes itself</h1>
+<p>This is the definition <a href="stock-portfolio-portfolio-dashboard.html">Portfolio Dashboard</a> runs each night. It is <strong>data, not code</strong> — every line is something you can read and change, and Flow runs it itself rather than running a program. It reads <a href="stock-portfolio-holdings.html">Holdings</a>, fetches daily bars from the one address written below, and works out every table on the page.</p>
+<h2 id="the-four-blocks">The four blocks</h2>
+<table>
+<thead><tr><th>Block</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><code>sources:</code></td><td>What to read: <a href="stock-portfolio-holdings.html">Holdings</a>, and one Yahoo Finance address per symbol</td></tr>
+<tr><td><code>derive:</code></td><td>Row sets worked out once — the sessions, the last two closes, the month</td></tr>
+<tr><td><code>let:</code></td><td>Single values: the portfolio’s total, its cost, its month against the benchmark</td></tr>
+<tr><td><code>emit:</code></td><td>The tables the capture holds, one per chart and table in the document</td></tr>
+</tbody>
+</table>
+<h2 id="sources-one-address-filled-per-holding"><code>sources:</code> — one address, filled per holding</h2>
+<p>The <code>prices</code> source is a <strong>template</strong>: the address is written once with <code>{symbol}</code> in it, and Flow fills it from the <code>symbol</code> column of your holdings. You wrote the endpoint down; a symbol you add to <a href="stock-portfolio-holdings.html">Holdings</a> is fetched the next night without asking again. Every filled address is checked against the one you wrote, so a value in the file cannot send Flow somewhere else.</p>
+<p><code>columns:</code> is there because a price API does not return rows. It returns a list of times and a list of closes that line up by position, and <code>columns:</code> says which list becomes which column. When one list is shorter than another — the session still open — the rows stop at the shorter one rather than inventing a price nothing quoted.</p>
+<h2 id="derive-the-work-done-once"><code>derive:</code> — the work done once</h2>
+<p><code>sessions</code> is every daily bar with its date worked out. <code>isoDate</code> turns the seconds a price API stamps a bar with into a day, in UTC, adding the exchange’s own offset from the same payload — so the bar lands on the day that exchange traded it.</p>
+<p><code>lastTwo</code> is each symbol’s last two sessions. The <code>by: [symbol]</code> matters: without it the last two rows of the whole set are two rows of one holding, and nothing else gets priced. <code>quotes</code> then takes <code>first</code> and <code>last</code> of those two — the earlier close and the latest, <strong>in the order they traded</strong>, not the smaller and the larger, which would be backwards for every stock that fell.</p>
+<h2 id="two-things-worth-knowing">Two things worth knowing</h2>
+<p><strong>Dates are worked out in UTC, by arithmetic.</strong> No calendar and no language settings enter this, so the same bars produce the same capture on any machine — which is what lets Flow tell a real change from a re-run.</p>
+<p><strong>Every authored holding remains in the table when a fetched response has no price rows.</strong> Its unpriced cells are empty; coverage names the gap and the total, weights, allocation and value bridge are withheld. An unavailable network request refuses the Gather and preserves the previous dated capture. Neither case establishes a current complete portfolio.</p>
+<p><strong>A period needs enough observations.</strong> Day changes require two available daily bars. The fields labelled one month use 22 available daily bars, not a calendar-month or transaction-based return; a shorter series leaves the change blank. The benchmark and macro indicators follow the same rules. A missing macro series retains its named row with blank values. Compare the dates in each indexed series before comparing their changes: symbols and markets can have different trading calendars.</p>
+<h2 id="making-it-yours">Making it yours</h2>
+<p>Edit <a href="stock-portfolio-holdings.html">Holdings</a> rather than this file for anything ordinary — your positions, your cash, your benchmark, the indicators you follow. Come back here to add a table, change what a summary row measures, or read prices from somewhere else.</p>
+</article>
+<footer class="site-footer"><nav class="site-neighbours"><a rel="prev" href="stock-portfolio-holdings.html"><span class="arrow" aria-hidden="true">←</span> Holdings</a><span class="site-neighbour-empty"></span></nav><a class="site-home" href="index.html">Home</a></footer>
+</body>
+</html>
