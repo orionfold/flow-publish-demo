@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Flow 1.7-dev (1)">
+<title>Budget Refresh</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><a class="site-home" href="index.html">Flow Guide Sampler</a><span class="site-separator" aria-hidden="true">›</span><span class="site-section">Household Budget</span></header>
+<article class="document" data-title="Budget Refresh">
+<header class="document-header"><h1 class="title">Budget Refresh</h1><p class="meta">2026-09-18 · 437 words</p></header>
+<h1 id="how-this-budget-refreshes-itself">How this budget refreshes itself</h1>
+<p>This is the definition <a href="household-budget-household-budget.html">Household Budget</a> runs each night. It is <strong>data, not code</strong> — every line is something you can read and change, and Flow runs it itself rather than running a program. It can read the files in this folder and nothing else, and it can only work things out and write the capture.</p>
+<h2 id="the-four-blocks">The four blocks</h2>
+<table>
+<thead><tr><th>Block</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><code>sources:</code></td><td>What to read: this folder’s statements, and the settings in <a href="household-budget-budget-profile.html">Budget Profile</a></td></tr>
+<tr><td><code>derive:</code></td><td>Row sets worked out once and used by several tables below</td></tr>
+<tr><td><code>let:</code></td><td>Single values — a total, a count, the latest month</td></tr>
+<tr><td><code>emit:</code></td><td>The tables and values the capture holds, one per block in the document</td></tr>
+</tbody>
+</table>
+<h2 id="derive-the-work-done-once"><code>derive:</code> — the work done once</h2>
+<p><code>lines</code> is every statement line with two columns added: the <code>category</code> its description matches, and the <code>month</code> its date falls in. Everything else is built from that, so the categorisation happens once rather than in each table.</p>
+<p><code>rules</code> reads the list you keep in <a href="household-budget-budget-profile.html">Budget Profile</a>. It is tried in order and the <strong>first match wins</strong>, so a more specific line goes above a more general one. The match ignores capitals and looks anywhere in the description.</p>
+<h2 id="let-the-single-values"><code>let:</code> — the single values</h2>
+<p><code>latest</code> is the newest month any statement mentions, which selects the current-month tables; the monthly comparison retains every supplied month. <code>savingsRate</code> shows the shape of a calculation: the <code>? :</code> guards against dividing by zero, so a month with no positive recorded income has no savings-rate number. Missing income is not evidence of a 0% rate.</p>
+<h2 id="two-things-worth-knowing">Two things worth knowing</h2>
+<p><strong>Month names are English.</strong> <code>monthName(latest)</code> turns <code>2026-08</code> into <code>August 2026</code> from a fixed list, not from your Mac’s language settings — so the same statements produce the same capture on any machine, which is what lets Flow tell a real change from a re-run.</p>
+<p><strong>Merchant names are trimmed, not pattern-matched.</strong> <code>trimTrailing</code> drops a trailing store number and a trailing two-letter state code, so <code>STARBUCKS #1123 SF</code> and <code>STARBUCKS #4471 CA</code> count as one merchant. Those two things are all it removes: there is no pattern language here, because a pattern is code you would have to read as a program instead of as a sentence.</p>
+<h2 id="making-it-yours">Making it yours</h2>
+<p>Edit <a href="household-budget-budget-profile.html">Budget Profile</a> rather than this file for anything ordinary — your categories, your budgets, your matching rules. Come back here to add a table, change what a summary row measures, or read from somewhere else.</p>
+</article>
+<footer class="site-footer"><nav class="site-neighbours"><a rel="prev" href="household-budget-budget-profile.html"><span class="arrow" aria-hidden="true">←</span> Budget Profile</a><a rel="next" href="household-budget-household-budget.html">Household Budget <span class="arrow" aria-hidden="true">→</span></a></nav><a class="site-home" href="index.html">Home</a></footer>
+</body>
+</html>
