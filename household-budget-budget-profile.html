@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Flow 1.7-dev (1)">
+<title>Budget Profile</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><a class="site-home" href="index.html">Flow Guide Sampler</a><span class="site-separator" aria-hidden="true">›</span><span class="site-section">Household Budget</span></header>
+<article class="document" data-title="Budget Profile">
+<header class="document-header"><p class="meta">2026-09-18 · 656 words</p></header>
+<h1 id="budget-profile">Budget Profile</h1>
+<p><strong>Illustrative business inputs.</strong> Edit the named table using its <strong>Open in the table editor</strong> control. <strong>View ▸ Edit Table</strong> opens the first table. Save the input document, then run the Jobs on <a href="household-budget-household-budget.html">Household Budget</a>; its refreshed views read these saved rows.</p>
+<h2 id="budgets">Budgets</h2>
+<table>
+<thead><tr><th>category</th><th>monthly</th></tr></thead>
+<tbody>
+<tr><td>Housing</td><td>2950</td></tr>
+<tr><td>Groceries</td><td>900</td></tr>
+<tr><td>Dining</td><td>450</td></tr>
+<tr><td>Transport</td><td>420</td></tr>
+<tr><td>Utilities</td><td>320</td></tr>
+<tr><td>Health</td><td>350</td></tr>
+<tr><td>Subscriptions</td><td>120</td></tr>
+<tr><td>Shopping</td><td>400</td></tr>
+<tr><td>Kids</td><td>1400</td></tr>
+<tr><td>Travel</td><td>300</td></tr>
+<tr><td>Giving</td><td>200</td></tr>
+</tbody>
+</table>
+<h2 id="rules">Rules</h2>
+<table>
+<thead><tr><th>match</th><th>category</th></tr></thead>
+<tbody>
+<tr><td>PAYROLL</td><td>Income</td></tr>
+<tr><td>TRANSFER TO SAVINGS</td><td>Savings</td></tr>
+<tr><td>RENT</td><td>Housing</td></tr>
+<tr><td>WHOLE FOODS</td><td>Groceries</td></tr>
+<tr><td>TRADER JOE</td><td>Groceries</td></tr>
+<tr><td>SAFEWAY</td><td>Groceries</td></tr>
+<tr><td>COSTCO</td><td>Groceries</td></tr>
+<tr><td>CHIPOTLE</td><td>Dining</td></tr>
+<tr><td>STARBUCKS</td><td>Dining</td></tr>
+<tr><td>BLUE BOTTLE</td><td>Dining</td></tr>
+<tr><td>SWEETGREEN</td><td>Dining</td></tr>
+<tr><td>DOORDASH</td><td>Dining</td></tr>
+<tr><td>CHEVRON</td><td>Transport</td></tr>
+<tr><td>SHELL OIL</td><td>Transport</td></tr>
+<tr><td>UBER</td><td>Transport</td></tr>
+<tr><td>CLIPPER</td><td>Transport</td></tr>
+<tr><td>PG&amp;E</td><td>Utilities</td></tr>
+<tr><td>COMCAST</td><td>Utilities</td></tr>
+<tr><td>VERIZON</td><td>Utilities</td></tr>
+<tr><td>KAISER</td><td>Health</td></tr>
+<tr><td>CVS</td><td>Health</td></tr>
+<tr><td>24 HOUR FITNESS</td><td>Health</td></tr>
+<tr><td>NETFLIX</td><td>Subscriptions</td></tr>
+<tr><td>SPOTIFY</td><td>Subscriptions</td></tr>
+<tr><td>APPLE.COM/BILL</td><td>Subscriptions</td></tr>
+<tr><td>AMAZON</td><td>Shopping</td></tr>
+<tr><td>TARGET</td><td>Shopping</td></tr>
+<tr><td>LITTLE OAKS</td><td>Kids</td></tr>
+<tr><td>UNITED AIRLINES</td><td>Travel</td></tr>
+<tr><td>AIRBNB</td><td>Travel</td></tr>
+<tr><td>RED CROSS</td><td>Giving</td></tr>
+</tbody>
+</table>
+<h2 id="settings">Settings</h2>
+<table>
+<thead><tr><th>key</th><th>value</th></tr></thead>
+<tbody>
+<tr><td>currency</td><td>USD</td></tr>
+<tr><td>income_monthly</td><td>9800</td></tr>
+<tr><td>savings_target_pct</td><td>20</td></tr>
+</tbody>
+</table>
+<h2 id="about-these-inputs">About these inputs</h2>
+<p>The one file you edit. The input tables contain the household’s plan: the income you expect each month, the savings rate you are aiming for, a budget per category, and the rules that sort a bank statement’s lines into those categories. <a href="household-budget-household-budget.html">Household Budget</a> reads the budgets from here each night, and <a href="household-budget-budget-refresh.html">Budget Refresh</a> uses the rules to categorize whatever statements you drop in <code>statements/</code>.</p>
+<h2 id="what-each-field-means">What each field means</h2>
+<table>
+<thead><tr><th>Field</th><th>What it is</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><code>income_monthly</code></td><td>What lands in the account in a normal month, after tax. It supplies the planned savings-transfer target; the cash-flow surplus rate uses recorded income.</td><td><code>9800</code></td></tr>
+<tr><td><code>savings_target_pct</code></td><td>The share of income you mean to keep.</td><td><code>20</code></td></tr>
+<tr><td><code>budgets</code></td><td>One line per category with its monthly limit. A category with no line is charted with no limit.</td><td>Groceries, monthly limit 900</td></tr>
+<tr><td><code>rules</code></td><td>One line per merchant pattern. <code>match</code> is compared to the statement’s description, case-insensitive; the first rule that matches wins. <code>Income</code> and <code>Savings</code> are the two names the refresh treats specially.</td><td>WHOLE FOODS → Groceries</td></tr>
+</tbody>
+</table>
+<h2 id="make-it-yours">Make it yours</h2>
+<ul>
+<li><strong>Add a category.</strong> Add a row in the <strong>Budgets</strong> table; it is in the morning’s table when the bound table refreshes.</li>
+<li><strong>Teach it a merchant.</strong> The dashboard’s <em>Uncategorized</em> table lists every line no rule caught. Open <strong>Rules</strong> in the Table editor, add the matching rows in priority order, save and run the refresh.</li>
+<li><strong>Use your own statements.</strong> Export a month from your bank as CSV, with the headers <code>Date</code>, <code>Description</code>, <code>Amount</code>, ISO dates and signed amounts (outflow negative), and put it in <code>statements/</code>. Separate debit/credit exports must first be mapped to this format; this definition does not infer bank layouts. The two example statements are made up; delete them when yours are in.</li>
+</ul>
+<p>Nothing in this folder is sent anywhere. The refresh reads the statements on this Mac and writes a summary beside them.</p>
+</article>
+<footer class="site-footer"><nav class="site-neighbours"><a rel="prev" href="flow-handbook-workspace-library.html"><span class="arrow" aria-hidden="true">←</span> Workspace Library</a><a rel="next" href="household-budget-budget-refresh.html">Budget Refresh <span class="arrow" aria-hidden="true">→</span></a></nav><a class="site-home" href="index.html">Home</a></footer>
+</body>
+</html>
