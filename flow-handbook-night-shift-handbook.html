@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Flow 1.7-dev (1)">
+<title>Night Shift Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><a class="site-home" href="index.html">Flow Guide Sampler</a><span class="site-separator" aria-hidden="true">›</span><span class="site-section">Flow Handbook</span></header>
+<article class="document" data-title="Night Shift Handbook">
+<header class="document-header"><p class="meta">2026-09-18 · 734 words</p></header>
+<h1 id="night-shift-handbook">Night Shift Handbook</h1>
+<h2 id="keep-a-useful-document-current">Keep a useful document current</h2>
+<p>Night Shift runs the work a document declares, then records what changed. You choose the documents, sources and settings. Start with a copied workspace so its inputs and outputs belong to your work.</p>
+<figure class="picture"><img src="images/85c63583abf8f232ab73f820c87b29102ed7940b4cb940b21ff3952b66282ddc.jpeg" alt="A quiet desk prepared for the next morning"><figcaption>A quiet desk prepared for the next morning</figcaption></figure>
+<h2 id="four-jobs-plus-the-redraw">Four jobs, plus the redraw</h2>
+<table>
+<thead><tr><th>Job</th><th>What it does</th><th>What to review</th></tr></thead>
+<tbody>
+<tr><td>Gather</td><td>Reads named files or web sources, calculates rows and saves a dated capture</td><td>The definition, source dates and output</td></tr>
+<tr><td>Keep sources fresh</td><td>Compares named files, folders or public pages with the prior read</td><td>Changed source text and any failed reads</td></tr>
+<tr><td>Reconcile against folder</td><td>Updates the named folder’s inventory</td><td>Added, removed or changed files</td></tr>
+<tr><td>Overnight notes</td><td>Uses a configured local model to interpret the document’s numeric evidence</td><td>The notes and their limitations</td></tr>
+<tr><td>Bound table or chart</td><td>Redraws from its named data without needing another job row</td><td>The new values and whether the narrative still holds</td></tr>
+</tbody>
+</table>
+<p>Gather and redraw calculations do not need a model. Overnight notes do. The product checks numeric claims against its available rows; that check does not establish that every inference or source is correct. Review the result.</p>
+<h2 id="set-up-the-work-in-the-editors">Set up the work in the editors</h2>
+<ol start="1">
+<li>On the main document, choose <strong>File ▸ Night Shift Jobs…</strong>. Choose the saved definition or sources it should use.</li>
+<li>Open the linked definition document, then choose <strong>File ▸ Edit Definition…</strong> to inspect the sources, calculation steps and emitted rows.</li>
+<li>Try one small input change, then choose <strong>Settings ▸ Night Shift ▸ Run now</strong>. A manual run works with scheduling off. Compare the result with the expected change in Make it yours.</li>
+<li>Use the moon in the title bar or <strong>Settings ▸ Night Shift</strong> to configure the overnight window. Flow’s available controls show when the Mac can run and which model is ready.</li>
+</ol>
+<p><strong>Run now works across your open folders.</strong> For a first practice run, keep only the copied workspace open and review its saved jobs first. Reopen your other folders when you are ready to include their work.</p>
+<h2 id="source-paths-travel-with-the-folder">Source paths travel with the folder</h2>
+<p>A path such as <code>inputs/*.md#tables:Record</code> reads the matching local notes. A binding such as <code>data/review-*.json#summary</code> reads the newest matching capture by filename and the named row set. Keep the folder structure intact when you copy a workspace. A public web source makes a network request; a local definition does not connect to an external business system.</p>
+<h2 id="the-morning-is-reviewable">The morning is reviewable</h2>
+<p>The Morning Briefing names changed documents and failed work. Open the document to inspect changes; Review Changes offers Keep or Revert, and History retains saved versions. An unchanged-input run should leave an unchanged document alone. A failed fetch is missing evidence, not a fresh value.</p>
+<h2 id="choose-what-is-automatic">Choose what is automatic</h2>
+<p>Numeric tables and charts can regenerate from their inputs. An authored diagram, conclusion, draft letter or recommendation may still need your review. Every workspace explains that distinction. Remove an optional web watch or Overnight notes job if you do not want it.</p>
+<table>
+<thead><tr><th>To practise</th><th>Good starting workspace</th></tr></thead>
+<tbody>
+<tr><td>Local arithmetic</td><td>Household Budget or Living Document Starter</td></tr>
+<tr><td>Several people’s updates</td><td>Team Status</td></tr>
+<tr><td>Public source freshness</td><td>Competitor Watch</td></tr>
+<tr><td>Questions from evidence</td><td>Insurance Renewal or Legal Matter</td></tr>
+</tbody>
+</table>
+<p>The Guide’s folders are examples, not automatic integrations. Copy the one closest to your task and replace its sample inputs.</p>
+<h2 id="tables-are-inputs-jobs-repeat-the-work">Tables are inputs; Jobs repeat the work</h2>
+<p>Edit business records with the named table’s <strong>Open in the table editor</strong> control. On the living report, <strong>File ▸ Night Shift Jobs…</strong> shows the recurring work. Its linked saved definition opens with <strong>File ▸ Edit Definition…</strong> for changes to the calculation. Document properties and these technical declarations still travel in frontmatter; ordinary record edits do not require YAML.</p>
+<p>A definition can read <code>Quarterly Close.md#table:Quarters</code>: the single table below the exact <strong>Quarters</strong> heading. A dated pattern such as <code>inputs/health-operations-*.md#table:Weeks</code> reads the newest complete packet. <code>inputs/*.md#tables:Record</code> reads the <strong>Record</strong> table from every matching file, useful for one update per person or one document per form. Keep headings and column names when replacing sample values; change the definition if you rename them.</p>
+</article>
+<footer class="site-footer"><nav class="site-neighbours"><a rel="prev" href="welcome.html"><span class="arrow" aria-hidden="true">←</span> Welcome</a><a rel="next" href="flow-handbook-using-flow.html">Using Flow <span class="arrow" aria-hidden="true">→</span></a></nav><a class="site-home" href="index.html">Home</a></footer>
+</body>
+</html>
