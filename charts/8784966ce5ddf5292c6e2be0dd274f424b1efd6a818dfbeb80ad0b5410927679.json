@@ -1,0 +1,4 @@
+{
+  "body" : "flowchart LR\n S[Sources] --> D[Document]\n D --> R[Review]\n R --> N[Next decision]\n",
+  "language" : "mermaid"
+}
