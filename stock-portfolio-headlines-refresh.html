@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Flow 1.7-dev (1)">
+<title>Headlines Refresh</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><a class="site-home" href="index.html">Flow Guide Sampler</a><span class="site-separator" aria-hidden="true">›</span><span class="site-section">Stock Portfolio</span></header>
+<article class="document" data-title="Headlines Refresh">
+<header class="document-header"><h1 class="title">Headlines Refresh</h1><p class="meta">2026-09-18 · 358 words</p></header>
+<h1 id="how-the-headlines-refresh-themselves">How the headlines refresh themselves</h1>
+<p>This is the second definition <a href="stock-portfolio-portfolio-dashboard.html">Portfolio Dashboard</a> runs each night, and it writes the headlines table. It is separate from <a href="stock-portfolio-portfolio-refresh.html">Portfolio Refresh</a> because it writes a <strong>different capture</strong>: the dashboard binds its prices to <code>data/portfolio-*.json</code> and its headlines to <code>data/news-*.json</code>, and one definition writes one capture. Two captures, two definitions, two jobs.</p>
+<h2 id="what-it-does">What it does</h2>
+<table>
+<thead><tr><th>Block</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><code>sources:</code></td><td>Your holdings, and one feed address per symbol</td></tr>
+<tr><td><code>emit:</code></td><td>The headlines table, three per holding</td></tr>
+</tbody>
+</table>
+<p>The feed address is a <strong>template</strong>, filled from the <code>symbol</code> column of your holdings exactly as the prices are — you wrote the address once, and a symbol you add to <a href="stock-portfolio-holdings.html">Holdings</a> is followed the next night. <code>as: feed</code> says the answer is a feed rather than a page of data, so Flow reads each item’s title, link and date and nothing else.</p>
+<p><code>by: [symbol]</code> on the sample is what makes it three per holding. Without it, the first three of the whole set would all belong to the first symbol.</p>
+<p><code>isoDay(published)</code> turns a feed’s own date — <code>Fri, 04 Sep 2026 11:07:39 +0000</code> — into <code>2026-09-04</code>. It answers in UTC, always, so the same feed gives the same capture wherever your Mac is; a date it cannot read shows nothing rather than the wrong day.</p>
+<p><code>host(link)</code> is what turns <code>https://www.thestreet.com/a/b</code> into <code>thestreet.com</code> — the site, which is what the table shows. It names one thing and can do nothing else: there is no pattern language here, because a pattern is code you would have to read as a program instead of as a sentence.</p>
+<h2 id="headlines-are-the-publisher-s-words">Headlines are the publisher’s words</h2>
+<p>Nothing here summarises, rewrites or judges a headline. The table shows what the publisher wrote, with the site it came from, and preserves its article URL in the capture. Older bundled rows without an original URL are explicitly incomplete; a publisher hostname is not an article citation. If a feed says nothing on a given night, that holding simply has no rows — an empty answer is an honest one.</p>
+</article>
+<footer class="site-footer"><nav class="site-neighbours"><a rel="prev" href="stock-portfolio-portfolio-dashboard.html"><span class="arrow" aria-hidden="true">←</span> Portfolio Dashboard</a><a rel="next" href="stock-portfolio-holdings.html">Holdings <span class="arrow" aria-hidden="true">→</span></a></nav><a class="site-home" href="index.html">Home</a></footer>
+</body>
+</html>
