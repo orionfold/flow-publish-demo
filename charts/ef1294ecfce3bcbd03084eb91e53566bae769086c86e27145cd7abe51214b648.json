@@ -1,0 +1,4 @@
+{
+  "body" : "chartType: KPI Card\ntitle: This month against the plan\nsubtitle: USD; savings rate is recorded cash-flow surplus / income\nsource: data/spending-*.json, newest capture\ndata:\n  - {metric: \"Spent in August 2026\", value: 6652, goal: 7810}\n  - {metric: \"Income received\", value: 9800, goal: 9800}\n  - {metric: \"Savings rate, %\", value: 32.1, goal: 20}\n  - {metric: \"Moved to savings\", value: 1500, goal: 1960}\nsemantic_types: {metric: Category, value: Quantity, goal: Quantity}\nencodings:\n  metric: {field: metric}\n  value: {field: value}\n  goal: {field: goal}\n",
+  "language" : "chart"
+}
