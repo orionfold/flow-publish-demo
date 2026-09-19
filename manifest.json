@@ -151,6 +151,14 @@
       "isLivingDocument" : false,
       "page" : "flow-handbook-night-shift-handbook.html",
       "path" : "Flow Handbook/Night Shift Handbook.md",
+      "receipts" : {
+        "count" : 1,
+        "kinds" : [
+          "publish.output"
+        ],
+        "lastEntryID" : "ef849178-0cf2-492f-a193-81332cb0e172",
+        "lastRecordedAt" : "2026-09-18T15:59:07.088Z"
+      },
       "section" : "Flow Handbook",
       "sections" : [
         {
@@ -277,18 +285,12 @@
       "words" : 1435
     },
     {
-      "description" : "title: Workspace Library tags:",
+      "description" : "Every living workspace is a folder with a useful main document and the local files that support it.",
       "isLivingDocument" : false,
       "page" : "flow-handbook-workspace-library.html",
       "path" : "Flow Handbook/Workspace Library.md",
       "section" : "Flow Handbook",
       "sections" : [
-        {
-          "id" : "top",
-          "level" : 0,
-          "title" : "Workspace Library",
-          "words" : 12
-        },
         {
           "id" : "workspace-library",
           "level" : 1,
@@ -339,7 +341,7 @@
         }
       ],
       "title" : "Workspace Library",
-      "words" : 605
+      "words" : 593
     },
     {
       "description" : "Illustrative business inputs.",
@@ -395,7 +397,7 @@
       "words" : 656
     },
     {
-      "description" : "This is the definition Household Budget runs each night.",
+      "description" : "[\"{metric: '{'Spent in ' + monthName(latest)}', value: '{round(spentThisMonth, 0)}', goal: '{round(totalBudget, 0)}'}\", \"{metric: Income received, value: '{round(incomeReceived, 0)}', goal: '{round(incomeExpected, 0)}'}\", \"{metric: 'Savings rate, %', value: '{savingsRate}', goal: '{savingsTarget}'}\", \"{metric: Moved to savings, value: '{round(saved, 0)}', goal: '{round(incomeExpected * savingsTarget / 100, 0)}'}\", \"{calculate: 'monthly', as: budget}\", \"{concat: observedCategories, unlessPresent: category}\", \"{lookup: category, from: spentByCategory, on: category, fields: [spent]}\", \"{calculate: 'round(coalesce(spent, 0), 0)', as: spent}\", \"{calculate: 'monthly', as: budget}\", \"{concat: observedCategories, unlessPresent: category}\", \"{lookup: category, from: spentByCategory, on: category, fields: [spent]}\", \"{calculate: 'round(coalesce(spent, 0), 0)', as: spent}\", \"{fold: [spent, budget], key: series, value: amount}\", \"{calculate: 'series == 'spent' ? 'Spent' : 'Budget'', as: series}\", \"{columns: [category, series, amount]}\", {filter: \"category != 'Income' && category != 'Savings'\"}, \"{aggregate: [month, category], sum: spent, as: spent}\", \"{calculate: 'round(spent, 0)', as: spent}\", {filter: \"spent > 0\"}, {sort: month}, \"{lookup: date, from: spentByDate, on: date, fields: [spent]}\", \"{calculate: 'coalesce(spent, 0)', as: spent}\", {sort: date}, \"{window: '', sum: spent, as: running}\", \"{calculate: 'date', as: day}\", \"{calculate: 'round(running, 0)', as: spent}\", \"{trimTrailing: description, as: Merchant, drop: [digits, statecode]}\", \"{aggregate: [Merchant, category], sum: spent, count: spent, as: [Spent, Count]}\", \"{calculate: 'category', as: Category}\", \"{columns: [Merchant, Category, Count, Spent]}\", \"{calculate: 'round(Spent, 0)', as: Spent}\", \"{sort: Spent, descending: true}\", {sample: 12}, {filter: \"category == 'Uncategorized'\"}, \"{calculate: 'date', as: Date}\", \"{calculate: 'description', as: Description}\", \"{calculate: 'round(-spent, 2)', as: Amount}\"]",
       "isLivingDocument" : false,
       "page" : "household-budget-budget-refresh.html",
       "path" : "Household Budget/Budget Refresh.md",
@@ -789,7 +791,7 @@
       "words" : 617
     }
   ],
-  "generatedAt" : "2026-09-18T15:58:29Z",
+  "generatedAt" : "2026-09-19T05:17:42Z",
   "generator" : "Flow 1.7-dev (1)",
   "home" : "README.md",
   "images" : [
